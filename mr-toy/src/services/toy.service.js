@@ -58,7 +58,7 @@ function createToy() {
 // TEST DATA
 // storageService.post(STORAGE_KEY, {vendor: 'Subali Rahok 6', price: 980}).then(x => console.log(x))
 function getDefaultFilter() {
-    return { txt: '', isDone: undefined }
+    return { name: '', inStock: true}
 }
 
 function createToys() {

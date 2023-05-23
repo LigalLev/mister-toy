@@ -45,7 +45,7 @@ export function ToyFilter({ onSetFilter }) {
                 id="name"
                 name="name"
                 placeholder="By name"
-                value={filterByToEdit.txt}
+                value={filterByToEdit.name}
                 onChange={handleChange}
                 ref={elInputRef}
             />

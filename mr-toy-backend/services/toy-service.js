@@ -48,7 +48,7 @@ function remove(toyId) {
 function save(toy) {
     if (toy._id) {
         const toyToUpdate = gToys.find(currToy => currToy._id === toy._id)
-        toyToUpdate.nane = toy.name
+        toyToUpdate.name = toy.name
         toyToUpdate.inStock = toy.inStock
         toyToUpdate.createdAt = toy.createdAt
         if (toy.labels) {
