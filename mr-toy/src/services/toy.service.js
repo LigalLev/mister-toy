@@ -12,18 +12,20 @@ export const toyService = {
     remove,
     getEmptyToy,
     getDefaultFilter,
+    getDefaultSortBy,
+    getImgUrl,
 }
 
-function query(filterBy = {}) {
-    return httpService.get(BASE_URL, filterBy)
+function query(filterBy = {}, sortBy = {}) {
+    return httpService.get(BASE_URL, { filterBy, sortBy })
     // return storageService.query(STORAGE_KEY).then(toys => toys)
 }
 
 function getById(toyId) {
     return httpService.get(BASE_URL + toyId)
-
     // return storageService.get(STORAGE_KEY, toyId)
 }
+
 function remove(toyId) {
     return httpService.delete(BASE_URL + toyId)
 
@@ -31,6 +33,7 @@ function remove(toyId) {
     // return storageService.remove(STORAGE_KEY, toysId)
 }
 function save(toy) {
+    console.log('toy:', toy)
     const method = (toy._id) ? 'put' : 'post'
     return httpService[method](BASE_URL, toy)
 }
@@ -38,27 +41,25 @@ function save(toy) {
 function getEmptyToy() {
     return {
         name: '',
-        price: 22,
-        lables: [],
+        price: '',
+        labels: ['Kids'],
         inStock: true,
+        imgUrl: ''
     }
 }
 
-function createToy() {
-    return {
-        _id: utilService.makeId(),
-        name: 'Talking Doll',
-        price: 123,
-        labels: ['Doll', 'Battery Powered', 'Baby'],
-        createdAt: 1631031801011,
-        inStock: true,
-    }
+function getImgUrl(imgUrl){
+    const tempUrl = "https://t4.ftcdn.net/jpg/04/73/25/49/360_F_473254957_bxG9yf4ly7OBO5I0O5KABlN930GwaMQz.jpg"
+    if (imgUrl) return imgUrl
+    return tempUrl
+    
 }
 
-// TEST DATA
-// storageService.post(STORAGE_KEY, {vendor: 'Subali Rahok 6', price: 980}).then(x => console.log(x))
 function getDefaultFilter() {
-    return { name: '', inStock: true}
+    return {}
+}
+function getDefaultSortBy() {
+    return { type: 'name' }
 }
 
 function createToys() {

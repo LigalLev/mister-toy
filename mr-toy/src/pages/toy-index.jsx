@@ -1,26 +1,30 @@
-import { useDispatch, useSelector } from 'react-redux'
-
+import { useSelector } from 'react-redux'
+import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 
 import { toyService } from '../services/toy.service'
+import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service'
 
 import { ToyList } from '../cmps/toy-list'
 import { ToyFilter } from '../cmps/toy-filter'
-import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service'
-import { loadToys, removeToy, saveToy } from '../store/toy.action'
-import { useEffect, useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { loadLabels, loadToys, removeToy, saveToy } from '../store/toy.action'
 
 export function ToyIndex() {
 
     const [filterBy, setFilterBy] = useState(toyService.getDefaultFilter())
-    const dispatch = useDispatch()
+    const [sortBy, setSortBy] = useState(toyService.getDefaultSortBy())
     const toysData = useSelector((storeState) => storeState.toyModule.toys)
     const isLoading = useSelector((storeState) => storeState.toyModule.isLoading)
-
+    const labels = useSelector((storeState) => storeState.toyModule.labels)
 
     useEffect(() => {
-        loadToys(filterBy)
-    }, [filterBy])
+        console.log('loacing toys with:', sortBy)
+        loadToys(filterBy, sortBy)
+    }, [filterBy, sortBy])
+
+    useEffect(() => {
+        loadLabels()
+    }, [])
 
     function onRemoveToy(toyId) {
         removeToy(toyId)
@@ -43,41 +47,28 @@ export function ToyIndex() {
             })
     }
 
-    // function onEditToy(car) {
-    //     const price = +prompt('New price?', car.price)
-    //     if (!price || price === car.price) return
-
-    //     const carToSave = { ...car, price }
-    //     saveCar(carToSave)
-    //         .then((savedCar) => {
-    //             showSuccessMsg(`Car updated to price: $${savedCar.price}`)
-    //         })
-    //         .catch(err => {
-    //             showErrorMsg('Cannot update car')
-    //         })
-    // }
-
-   
-
     function onSetFilter(filterBy) {
-        console.log('FilterBy', filterBy)
         setFilterBy(filterBy)
     }
 
+    function onSetSortBy(sortBy) {
+        setSortBy(sortBy)
+    }
+
     return <section>
-        <h3>Toys App</h3>
         <main>
-        <Link to={`/toy/edit`}>Add Toy</Link>
-            {/* <button onClick={onAddToy}>Add random toy</button> */}
-            <ToyFilter onSetFilter={onSetFilter} />
+            <section className="operating-container full">
+                <Link to={`/toy/edit`}>Add Toy</Link>
+                <ToyFilter
+                    onSetFilter={onSetFilter}
+                    onSetSortBy={onSetSortBy} />
+            </section>
             {isLoading && <h4>Loading...</h4>}
             <ToyList
                 toys={toysData.toysToDisplay}
                 onRemoveToy={onRemoveToy}
                 onAddToy={onAddToy}
             />
-            <hr />
-            {/* <pre>{JSON.stringify(cart, null, 2)}</pre> */}
         </main>
     </section>
 }

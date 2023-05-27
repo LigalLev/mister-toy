@@ -1,0 +1,22 @@
+.toy-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 250px);
+    gap: 1em;
+    padding-block: 2em;
+    justify-content: center;
+    text-align: center;
+    list-style: none;
+
+    button {
+        background-color: transparent;
+        border: none;
+    }
+
+}
+
+@media (max-width: 767px) {
+    .toy-list {
+        grid-template-columns: 1fr;
+    }
+
+}

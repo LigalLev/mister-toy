@@ -6,12 +6,9 @@ import { toyService } from '../services/toy.service'
 import { removeToy, saveToy } from '../store/toy.action'
 import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service'
 
-
 export function ToyEdit() {
-    const [toyEditInput, setToyEditInput] = useState('')
     const navigate = useNavigate()
     const { toyId } = useParams()
-    const [toyAddInput, setAddToyInput] = useState('')
     const [toyToEdit, setToyToEdit] = useState(toyService.getEmptyToy())
 
     useEffect(() => {
@@ -28,24 +25,11 @@ export function ToyEdit() {
             })
     }
 
-    function onEditToy() {
-        toyToEdit.txt = toyEditInput
-        saveToy(toyToEdit)
-            .then((savedToy) => {
-                showSuccessMsg(` Updated toy: ${savedToy.txt}`)
-                navigate(`/toy`)
-            })
-            .catch(err => {
-                showErrorMsg('Cannot update toy')
-            })
-    }
-
     function onRemoveToy(toyId) {
         removeToy(toyId)
             .then(() => {
                 showSuccessMsg('Toy removed')
                 navigate(`/toy`)
-
             })
             .catch(err => {
                 showErrorMsg('Cannot remove toy')
@@ -65,6 +49,8 @@ export function ToyEdit() {
 
     function onSaveToy(ev) {
         ev.preventDefault()
+        console.log('toy to edit on save:',toyToEdit)
+        toyToEdit.labels = toyToEdit.lables ? toyToEdit.labels : ["Kids"]
         toyService.save(toyToEdit)
             .then((toy) => {
                 console.log('toy saved', toy);
@@ -77,59 +63,53 @@ export function ToyEdit() {
             })
     }
 
-    function onAddToy(ev) {
-        ev.preventDefault()
-        const toyToSave = toyService.getEmptyToy()
-        toyToSave.txt = toyAddInput
-        saveToy(toyToSave)
-            .then((savedToy) => {
-                showSuccessMsg(`Toy added`)
-            })
-            .catch(err => {
-                showErrorMsg('Cannot add toy')
-            })
-        setAddToyInput('')
-    }
-
-    function onHandleChange({ target }) {
-        setAddToyInput(target.value)
-    }
-
-
-
-    console.log('toyToEdit:', toyToEdit)
+    console.log('toyToEdit when saving:', toyToEdit)
     return <section className="toy-edit">
-        <h2>{toyToEdit.id ? 'Edit this toy' : 'Add a new toy'}</h2>
+        <img src={toyToEdit.imgUrl} alt="" />
+        <div className="edit-content-container">
+            <h2>{toyToEdit._id ? 'Edit toy' : 'Add a new toy'}</h2>
 
-        <form onSubmit={onSaveToy}>
-            <label htmlFor="name">Name:</label>
-            <input type="text"
-                name="name"
-                id="name"
-                placeholder="Enter name..."
-                value={toyToEdit.name}
-                onChange={handleChange}
-            />
-            <label htmlFor="price">Price : </label>
-            <input type="number"
-                name="price"
-                id="price"
-                placeholder="Enter price"
-                value={toyToEdit.price}
-                onChange={handleChange}
-            />
-            <label htmlFor="inStock">In stock </label>
-            <input type="checkbox"
-                name="inStock"
-                id="inStock" checked={toyToEdit.inStock} onChange={handleChangeInStock}
-            />
-            <div>
-                <button>{toyToEdit._id ? 'Save' : 'Add'}</button>
-                <Link to="/toy">Cancel</Link>
-            </div>
-        </form>
-        <button onClick={() => {
-            onRemoveToy(toyToEdit._id)
-        }}>x</button>
-    </section>
+            <form onSubmit={onSaveToy}>
+                <label htmlFor="name">Name</label>
+                <input type="text"
+                    name="name"
+                    id="name"
+                    placeholder="Enter name..."
+                    value={toyToEdit.name}
+                    onChange={handleChange}
+                />
+                <label htmlFor="price">Price </label>
+                <input type="number"
+                    name="price"
+                    id="price"
+                    placeholder="Enter price"
+                    value={toyToEdit.price}
+                    onChange={handleChange}
+                />
+
+                <label htmlFor="imgUrl">Image Url</label>
+                <input type="text"
+                    name="imgUrl"
+                    id="imgUrl"
+                    placeholder="Enter Url..."
+                    value={toyToEdit.imgUrl}
+                    onChange={handleChange}
+                />
+
+                <label htmlFor="inStock">inStock</label>
+                <input className="input-inStock" type="checkbox"
+                    name="inStock"
+                    value={toyToEdit.inStock}
+                    onChange={handleChangeInStock} checked={toyToEdit.inStock} />
+                <div>
+                    <button className="btn-save">{toyToEdit._id ? 'Save' : 'Add'}</button>
+                    {toyToEdit._id && <button className="btn-save" onClick={() => {
+                        onRemoveToy(toyToEdit._id)
+                    }}>Delete</button>}
+
+                    <Link to="/toy">Cancel</Link>
+                </div>
+            </form>
+        </div>
+    </section >
 }

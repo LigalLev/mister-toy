@@ -1,0 +1,12 @@
+.toy-details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-block-start: rem(50px);
+
+    img {
+        height: 40vh;
+        width: fit-content;
+
+    }
+}

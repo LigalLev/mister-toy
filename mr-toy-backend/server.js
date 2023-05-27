@@ -1,6 +1,7 @@
 const express = require('express')
 const app = express()
 const toyService = require('./services/toy-service')
+const labelService = require('./services/label.service')
 const cookieParser = require('cookie-parser')
 const path = require('path')
 const cors = require('cors')
@@ -33,7 +34,6 @@ app.use(express.json()) // for req.body
 
 /////////lable api
 app.get('/api/label', (req, res) => {
-    // TODO: get sortBy too
     labelService.query()
         .then(labels => {
             res.send(labels)
@@ -44,14 +44,11 @@ app.get('/api/label', (req, res) => {
         })
 })
 
-
 //////toys api
 // List
 app.get('/api/toy', (req, res) => {
-    const { name, maxPrice, pageIdx, labels, sortType,
-        sortDesc } = req.query
-    const filterBy = { name, labels, pageIdx, maxPrice: +maxPrice }
-    const sortBy = { type: sortType, desc: sortDesc }
+    const { filterBy, sortBy } = req.query
+//  console.log('filterBy in service:', filterBy)
     toyService.query(filterBy, sortBy)
         .then((data) => {
             res.send(data)
@@ -64,13 +61,14 @@ app.get('/api/toy', (req, res) => {
 
 // Add
 app.post('/api/toy', (req, res) => {
-    const { name, price, inStock, labels } = req.body
+    const { name, price, inStock, labels, imgUrl} = req.body
     const toy = {
         name,
         price: +price,
         inStock,
         createdAt: Date.now(),
         labels,
+        imgUrl
     }
     toyService.save(toy)
         .then((savedToy) => {
@@ -84,13 +82,14 @@ app.post('/api/toy', (req, res) => {
 
 // Edit
 app.put('/api/toy', (req, res) => {
-    const { _id, name, price, inStock, labels } = req.body
+    const { _id, name, price, inStock, labels, imgUrl } = req.body
     const toy = {
         _id,
         name,
         price: +price,
         inStock,
         labels,
+        imgUrl
     }
     toyService.save(toy)
         .then((savedToy) => {
@@ -125,8 +124,6 @@ app.delete('/api/toy/:toyId', (req, res) => {
             res.status(400).send('Cannot remove toy')
         })
 })
-
-
 
 app.get('/**', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html'))

@@ -1,15 +1,22 @@
 {
   "files": {
-    "main.css": "/static/css/main.3f6b09b4.css",
-    "main.js": "/static/js/main.b0dab66a.js",
+    "main.css": "/static/css/main.2ceb6506.css",
+    "main.js": "/static/js/main.059e4ca8.js",
     "static/js/787.0ebc6d30.chunk.js": "/static/js/787.0ebc6d30.chunk.js",
+    "static/media/aboutmrtoy.jpg": "/static/media/aboutmrtoy.6cde6ab5d9de5a9b15f4.jpg",
+    "static/media/welcomecut.jpg": "/static/media/welcomecut.d105e0e68a82f098c1a8.jpg",
+    "static/media/ScholarlyAmbitionRegular.ttf": "/static/media/ScholarlyAmbitionRegular.857ee5e14b7c1bd102b6.ttf",
+    "static/media/BoneyardBrawl-rgBdy.ttf": "/static/media/BoneyardBrawl-rgBdy.6ba464b7f4305a9590fe.ttf",
+    "static/media/RockoUltraFLF-Bold.ttf": "/static/media/RockoUltraFLF-Bold.e39dcc9bff8389337ebd.ttf",
+    "static/media/RockoFLF.ttf": "/static/media/RockoFLF.b7e15dae2bedeab87fc7.ttf",
+    "static/media/logobear.png": "/static/media/logobear.51f2f2fd94cac2687816.png",
     "index.html": "/index.html",
-    "main.3f6b09b4.css.map": "/static/css/main.3f6b09b4.css.map",
-    "main.b0dab66a.js.map": "/static/js/main.b0dab66a.js.map",
+    "main.2ceb6506.css.map": "/static/css/main.2ceb6506.css.map",
+    "main.059e4ca8.js.map": "/static/js/main.059e4ca8.js.map",
     "787.0ebc6d30.chunk.js.map": "/static/js/787.0ebc6d30.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.3f6b09b4.css",
-    "static/js/main.b0dab66a.js"
+    "static/css/main.2ceb6506.css",
+    "static/js/main.059e4ca8.js"
   ]
 }

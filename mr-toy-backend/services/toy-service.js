@@ -1,8 +1,8 @@
 const fs = require('fs');
 let gToys = require('../data/toy.json')
-const PAGE_SIZE = 3
+const PAGE_SIZE = 4
 
-function query(filterBy = {}, sortBy) {
+function query(filterBy = {}, sortBy = {}) {
     let toysToDisplay = gToys
     if (filterBy.name) {
         const regExp = new RegExp(filterBy.name, 'i')
@@ -11,16 +11,15 @@ function query(filterBy = {}, sortBy) {
     if (filterBy.maxPrice) {
         toysToDisplay = toysToDisplay.filter(toy => toy.price <= filterBy.maxPrice)
     }
-    if (filterBy.labels) {
-        const labels = filterBy.labels.split(',')
-        // console.log('labels:', labels);
-        toysToDisplay = toysToDisplay.filter(toy => labels.some(l => toy.labels.includes(l)))
-        // ['famous', 'low']
+    if (filterBy.inStock === 'true' || filterBy.inStock === 'false') {
+        toysToDisplay = toysToDisplay.filter(toy => toy.inStock === JSON.parse(filterBy.inStock))
     }
-    // 14 / 3 = 4.6 => 5
+    if (filterBy.labels) {
+        toysToDisplay = toysToDisplay.filter(toy => filterBy.labels.some(l => toy.labels.includes(l)))
+    }
     const pageCount = Math.ceil(toysToDisplay.length / PAGE_SIZE)
 
-    toysToDisplay = getSortedToys(toysToDisplay, sortBy)
+    toysToDisplay = _getSortedToys(toysToDisplay, sortBy)
 
     if (filterBy.pageIdx !== undefined) {
         let startIdx = filterBy.pageIdx * PAGE_SIZE
@@ -51,6 +50,8 @@ function save(toy) {
         toyToUpdate.name = toy.name
         toyToUpdate.inStock = toy.inStock
         toyToUpdate.createdAt = toy.createdAt
+        toyToUpdate.price = toy.price
+        toyToUpdate.imgUrl = toy.imgUrl
         if (toy.labels) {
             toyToUpdate.labels = [...toy.labels]
         }
@@ -61,11 +62,20 @@ function save(toy) {
     return _saveToysToFile().then(() => toy)
 }
 
-function getSortedToys(toysToDisplay, sortBy) {
-    toysToDisplay.sort((b1, b2) => (sortBy.desc) * (b2[sortBy.type] - b1[sortBy.type]))
+function _getSortedToys(toysToDisplay, sortBy) {
+    console.log('sotyBy:', sortBy)
+    sortBy.desc = -1
+    if (sortBy.type === 'name') {
+        console.log('sorting by name')
+        toysToDisplay.sort((t1, t2) => {
+            if (t1.name < t2.name) return -1
+            if (t1.name >= t2.name) return 1
+        })
+    } else {
+        toysToDisplay.sort((b1, b2) => (sortBy.desc) * (b2[sortBy.type] - b1[sortBy.type]))
+    }
     return toysToDisplay
 }
-
 
 function _makeId(length = 5) {
     let text = '';

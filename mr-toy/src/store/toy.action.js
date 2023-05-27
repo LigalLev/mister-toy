@@ -1,14 +1,12 @@
 import { toyService } from "../services/toy.service"
+import { labelService } from "../services/label.service"
 import { store } from './store'
-import { ADD_TOY, REMOVE_TOY, SET_TOYS, SET_IS_LOADING, UPDATE_TOY} from './toy.reducer'
+import { ADD_TOY, REMOVE_TOY, SET_TOYS, SET_IS_LOADING, UPDATE_TOY, SET_LABELS} from './toy.reducer'
 
-
-
-export function loadToys(filterBy) {
+export function loadToys(filterBy, sortBy) {
     store.dispatch({ type: SET_IS_LOADING, isLoading: true })
-    return toyService.query(filterBy)
+    return toyService.query(filterBy, sortBy)
         .then((toys) => {
-            console.log('toys:', toys)
             store.dispatch({ type: SET_TOYS, toys })
         })
         .catch(err => {
@@ -44,4 +42,14 @@ export function saveToy(toy) {
         })
 }
 
+export function loadLabels(){
+    return labelService.query()
+        .then((labels) => {
+            store.dispatch({ type: SET_LABELS, labels })
+        })
+        .catch(err => {
+            console.log('toy action -> Cannot load labels', err)
+            throw err
+        })
 
+}

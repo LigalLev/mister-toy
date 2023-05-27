@@ -1,14 +1,133 @@
 [
   {
+    "_id": "t106",
+    "name": "Action Figure",
+    "price": 39,
+    "labels": [
+      "Figure",
+      "Collectible",
+      "Kids"
+    ],
+    "inStock": true,
+    "imgUrl": "https://media.entertainmentearth.com/assets/images/e030df81c86c47a2909d17ba9f5adbd4xl.jpg",
+    "createdAt": 1631031801066
+  },
+  {
     "_id": "t103",
-    "name": "Remote Control Car",
-    "price": 89,
+    "name": "Alle Wooden Sorting and Counting Educational Toy",
+    "price": 100,
+    "imgUrl": "https://m.media-amazon.com/images/I/71esVu5pVmL._AC_SX679_.jpg",
     "labels": [
       "Car",
-      "Battery Powered",
       "Kids"
     ],
     "inStock": true
+  },
+  {
+    "_id": "t203",
+    "name": "Bizi board",
+    "price": 127,
+    "labels": [
+      "Animal",
+      "Soft",
+      "Baby"
+    ],
+    "inStock": true,
+    "imgUrl": "https://static.wixstatic.com/media/3f2b2b_f70f375a064244f897c10998035d82f9~mv2.jpeg/v1/fill/w_625,h_834,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/3f2b2b_f70f375a064244f897c10998035d82f9~mv2.jpeg"
+  },
+  {
+    "_id": "t107",
+    "name": "Board Game",
+    "price": 59,
+    "labels": [
+      "Game",
+      "Family",
+      "Kids"
+    ],
+    "inStock": false,
+    "imgUrl": "https://target.scene7.com/is/image/Target/GUEST_4a6c6a4b-4279-4520-9c7d-2e5036b525a4?wid=488&hei=488&fmt=pjpeg",
+    "createdAt": 1631031801077
+  },
+  {
+    "name": "Cocomelon doll",
+    "price": 25,
+    "inStock": true,
+    "createdAt": 1685194407075,
+    "labels": [
+      "Kids"
+    ],
+    "imgUrl": "https://i.guim.co.uk/img/media/f759cc2fab05664bca943dad0adc330cd0984d5e/99_0_767_959/master/767.jpg?width=700&quality=85&auto=format&fit=max&s=cf85482512f309df09432acdcf045b2c",
+    "_id": "5TG4e"
+  },
+  {
+    "_id": "t201",
+    "name": "Colorful Blocks balance game",
+    "price": 35,
+    "labels": [
+      "Blocks",
+      "Educational",
+      "Toddler"
+    ],
+    "inStock": true,
+    "imgUrl": "https://montessori-toys.co.uk/2747-large_default/jeu-equilibre.jpg"
+  },
+  {
+    "_id": "t101",
+    "name": "Doll",
+    "price": 123,
+    "labels": [
+      "Doll",
+      "Baby"
+    ],
+    "inStock": false,
+    "imgUrl": "https://cdn2.mulberrybushtoys.co.uk/content/images/thumbs/0012500_daisy-doll-small_380.jpeg"
+  },
+  {
+    "_id": "EGbnR",
+    "name": "Harry Potter",
+    "price": 23,
+    "labels": [
+      "Game",
+      "Family",
+      "Kids"
+    ],
+    "inStock": true,
+    "imgUrl": "https://cdn.speedsize.com/445b3f1d-fd31-4b62-b24b-5846a3ed38ac/https://d3m9l0v76dty0.cloudfront.net/system/photos/10146331/large/fabb3dce13c4e56295eb303d3ece2bd2.webp",
+    "createdAt": 1631031803088
+  },
+  {
+    "_id": "t206",
+    "name": "Ice cream counter playset",
+    "price": 56,
+    "labels": [
+      "Game",
+      "Family",
+      "Kids"
+    ],
+    "inStock": true,
+    "imgUrl": "https://m.media-amazon.com/images/I/81e+FmoHCxL._AC_SL1500_.jpg"
+  },
+  {
+    "_id": "t207",
+    "name": "Montessori matching egg",
+    "price": 79,
+    "labels": [
+      "Kids"
+    ],
+    "createdAt": 1642945741323,
+    "inStock": false,
+    "imgUrl": "https://cdn.shopify.com/s/files/1/0565/3672/7715/products/1_226005d7-991e-4f23-aa66-2ac396d205ca_720x720.jpg?v=1664653314"
+  },
+  {
+    "_id": "t200",
+    "name": "Puzzle",
+    "price": 149,
+    "labels": [
+      "Kids"
+    ],
+    "inStock": true,
+    "imgUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTOXp7YRgaSVlR6ClTcfHmIejtgiSoRpkRzmTVnc7wdQ-x12HSBj971mR6W7TRcBan0mic&usqp=CAU",
+    "createdAt": 1631031802000
   },
   {
     "_id": "t105",
@@ -19,13 +138,47 @@
       "Educational",
       "Kids"
     ],
-    "createdAt": 1631031801055,
-    "inStock": true
+    "inStock": true,
+    "imgUrl": "https://www.bigw.com.au/medias/sys_master/images/images/h28/h63/31427690102814.jpg",
+    "createdAt": 1631031801055
   },
   {
-    "name": "robot",
-    "price": 220,
+    "_id": "t208",
+    "name": "Stuffed Monkey",
+    "price": 19,
+    "labels": [
+      "Animal",
+      "Soft",
+      "Baby"
+    ],
+    "createdAt": 1643731995932,
+    "inStock": true,
+    "imgUrl": ""
+  },
+  {
+    "_id": "t205",
+    "name": "Superhero Action Figure",
+    "price": 49,
+    "labels": [
+      "Figure",
+      "Collectible",
+      "Kids"
+    ],
+    "createdAt": 1641459547184,
+    "inStock": true,
+    "imgUrl": ""
+  },
+  {
+    "_id": "t204",
+    "name": "Wooden Puzzle",
+    "price": 15,
+    "labels": [
+      "Puzzle",
+      "Educational",
+      "Kids"
+    ],
     "inStock": false,
-    "_id": "hcZLW"
+    "imgUrl": "https://m.media-amazon.com/images/I/71omowD+ntL.jpg",
+    "createdAt": 1631031802044
   }
 ]

@@ -12,11 +12,9 @@ export const utilService = {
 function makeId(length = 6) {
     var txt = ''
     var possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
-
     for (var i = 0; i < length; i++) {
         txt += possible.charAt(Math.floor(Math.random() * possible.length))
     }
-
     return txt
 }
 
@@ -52,7 +50,6 @@ function animateCSS(el, animation) {
         const animationName = `${prefix}${animation}`
 
         el.classList.add(`${prefix}animated`, animationName)
-
         // When the animation ends, we clean the classes and resolve the Promise
         function handleAnimationEnd(event) {
             event.stopPropagation()
@@ -97,9 +94,8 @@ function debounce(func, timeout = 300){
 
 function _getFormattedTime(t) {
     var d = new Date(t)
-    // console.log('d', d)
-
     var str = 'At ' + d.getDate() + '/' + (d.getMonth() + 1) + '/' +
         d.getFullYear() + ' Time: ' + d.getHours() + ':' + d.getMinutes()
     return str
 }
+

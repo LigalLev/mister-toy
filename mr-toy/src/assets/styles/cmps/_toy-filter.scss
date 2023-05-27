@@ -1,0 +1,20 @@
+.toy-filter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-inline: rem(15px);
+    padding: rem(10px);
+    flex-wrap: wrap;
+    .search-input-container {
+            font-size: 0.8rem;
+            color: black;
+            line-height: 2.5em;
+            width: 20em;
+            padding: 0.5em 1em;
+            margin-inline-end: 1em;
+            border-radius: 0.5em;
+            border: solid lightgrey;
+            border-width: 1px 1px 1px 1px;  
+            box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+        }
+}

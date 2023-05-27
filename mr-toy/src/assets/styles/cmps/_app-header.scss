@@ -1,0 +1,65 @@
+.app-header {
+    grid-template-columns: 1fr;
+    background-color: $clr;
+    color: $clr3;
+
+    .nav-container {
+        display: flex;
+        justify-self: right;
+        justify-content: start;
+
+        img {
+            height: 8em;
+        }
+
+        align-items: center;
+        justify-content: space-between;
+
+
+        nav {
+            display: flex;
+            justify-self: right;
+            justify-content: start;
+            flex-direction: column;
+
+            @include for-normal-layout {
+                flex-direction: row;
+            }
+
+            &.menu-open {
+                a {
+                    scale: 1;
+                }
+            }
+
+            a {
+                margin-inline: rem(10px);
+                flex: 1;
+                // padding: rem(20px);
+                scale: 0;
+
+                @include for-normal-layout {
+                    scale: 1;
+                }
+            }
+
+        }
+
+    }
+
+    .hamburger-btn {
+        font-size: 2em;
+        position: absolute;
+        align-self: end;
+        margin-block: 0.2em;
+        background-color: transparent;
+        border: none;
+        margin-inline-end: 10px;
+        color: $clr3;
+
+        @include for-normal-layout {
+            display: none;
+        }
+    }
+
+}
